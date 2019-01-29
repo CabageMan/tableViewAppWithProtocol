@@ -17,11 +17,10 @@ class ViewController: UIViewController, TableViewControllerDelegate {
         textButton.setTitle(text, for: .normal)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get instance of next view controller
-        if let nextViewController = segue.destination as? TableViewController {
-            nextViewController.delegate = self
-        }
+    @IBAction func textButtonClick(_ sender: UIButton) {
+        let nextViewControoler = TableViewController()
+        nextViewControoler.delegate = self
+        self.navigationController?.pushViewController(nextViewControoler, animated: true)
     }
 }
 

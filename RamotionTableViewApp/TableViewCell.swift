@@ -10,10 +10,6 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     
-    @IBOutlet weak var rowLabel: UILabel!
-    
-    @IBOutlet weak var checkLabel: UILabel!
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         

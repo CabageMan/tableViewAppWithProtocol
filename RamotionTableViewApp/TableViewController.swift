@@ -13,7 +13,9 @@ protocol TableViewControllerDelegate: class {
     func changeButtonText(text: String?)
 }
 
-class TableViewController: UITableViewController {
+class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    private var customTableView = UITableView()
     
     weak var delegate: TableViewControllerDelegate?
     
@@ -41,13 +43,32 @@ class TableViewController: UITableViewController {
     
     private var allRows = [TableViewContent.firstRow, .secondRow, .thirdRow, .fourthRow, .fifthRow, .sixthRow, .seventhRow, .eightsRow, .ninthRow, .tenthRow, .row11, .row12, .row13, .row14, .row15, .row16, .row17, .row18, .row19, .secondRow, .thirdRow, .fourthRow, .fifthRow, .sixthRow, .seventhRow, .eightsRow, .ninthRow, .tenthRow, .row11, .row12, .row13, .row14, .row15, .row16, .row17, .row18, .row19]
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Get display sizes
+        let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
+        
+        // Create custom table vuew and add it to superview
+        customTableView = UITableView(frame: CGRect(x: 0,
+                                                    y: statusBarHeight,
+                                                    width: displayWidth,
+                                                    height: displayHeight - statusBarHeight))
+        customTableView.register(TableViewCell.self, forCellReuseIdentifier: "tableViewCell")
+        customTableView.delegate = self
+        customTableView.dataSource = self
+        self.view.addSubview(customTableView)
+    }
+    
     // MARK: table view data source
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allRows.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let tableViewCellIdentifier = "tableViewCell"
         
@@ -56,13 +77,12 @@ class TableViewController: UITableViewController {
         }
         
         cell.textLabel?.text = allRows[indexPath.row].rawValue
-        //cell.rowLabel.text = TableViewContent.allRows[indexPath.row].rawValue
         
         return cell
     }
     
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.changeButtonText(text: allRows[indexPath.row].rawValue)
     }
  
