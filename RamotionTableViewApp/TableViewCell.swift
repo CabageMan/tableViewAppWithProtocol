@@ -6,7 +6,6 @@
 //  Copyright © 2019 Viktor Bednyi Inc. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class TableViewCell: UITableViewCell {
@@ -15,4 +14,15 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var checkLabel: UILabel!
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        if selected {
+            accessoryType = .checkmark
+            //cell.checkLabel.text = "✔︎"
+        } else {
+            accessoryType = .none
+            //cell.checkLabel.text = ""
+        }
+    }
 }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 
 // Define the TableViewControllerDelegate
 protocol TableViewControllerDelegate: class {
@@ -24,44 +23,47 @@ class TableViewController: UITableViewController {
         case thirdRow
         case fourthRow
         case fifthRow
-        
-        static var allRows: [TableViewContent] {
-            return [.firstRow, .secondRow, .thirdRow, .fourthRow, .fifthRow]
-        }
+        case sixthRow
+        case seventhRow
+        case eightsRow
+        case ninthRow
+        case tenthRow
+        case row11
+        case row12
+        case row13
+        case row14
+        case row15
+        case row16
+        case row17
+        case row18
+        case row19
     }
+    
+    private var allRows = [TableViewContent.firstRow, .secondRow, .thirdRow, .fourthRow, .fifthRow, .sixthRow, .seventhRow, .eightsRow, .ninthRow, .tenthRow, .row11, .row12, .row13, .row14, .row15, .row16, .row17, .row18, .row19, .secondRow, .thirdRow, .fourthRow, .fifthRow, .sixthRow, .seventhRow, .eightsRow, .ninthRow, .tenthRow, .row11, .row12, .row13, .row14, .row15, .row16, .row17, .row18, .row19]
     
     // MARK: table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TableViewContent.allRows.count
+        return allRows.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let tableViewCellIdentifier = "tableViewCell"
         
-        guard let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as? TableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as? TableViewCell else {
             fatalError("Dequeued cell is not a instance of TableViewCell")
         }
         
-        cell.rowLabel.text = TableViewContent.allRows[indexPath.row].rawValue
+        cell.textLabel?.text = allRows[indexPath.row].rawValue
+        //cell.rowLabel.text = TableViewContent.allRows[indexPath.row].rawValue
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        for cell in tableView.visibleCells as! [TableViewCell] {
-            if tableView.visibleCells.index(of: cell) == indexPath.row {
-                cell.checkLabel.text = "✔︎"
-                delegate?.changeButtonText(text: cell.rowLabel.text)
-            } else {
-                cell.checkLabel.text = ""
-            }
-        }
-    }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.changeButtonText(text: allRows[indexPath.row].rawValue)
+    }
+ 
 }
