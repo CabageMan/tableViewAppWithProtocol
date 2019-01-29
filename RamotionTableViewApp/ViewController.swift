@@ -8,19 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController, TableViewControllerDelegate {
+class ViewController: UIViewController {
 
     @IBOutlet weak var textButton: UIButton!
     
-    // Implement changeButton method of TableViewControllerDelegate
-    func changeButtonText(text: String?) {
-        textButton.setTitle(text, for: .normal)
-    }
-    
     @IBAction func textButtonClick(_ sender: UIButton) {
-        let nextViewControoler = TableViewController()
-        nextViewControoler.delegate = self
-        self.navigationController?.pushViewController(nextViewControoler, animated: true)
+        
+        let nextViewControler = TableViewController<CustomEnum>()
+        
+        // Add closure as valueChanged property of table view controller 
+        nextViewControler.valueChanged = { string in
+            self.textButton.setTitle(string.rawValue, for: .normal)
+        }
+        self.navigationController?.pushViewController(nextViewControler, animated: true)
     }
 }
 

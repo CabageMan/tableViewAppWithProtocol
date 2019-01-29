@@ -8,40 +8,53 @@
 
 import UIKit
 
-// Define the TableViewControllerDelegate
-protocol TableViewControllerDelegate: class {
-    func changeButtonText(text: String?)
-}
-
-class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    private var customTableView = UITableView()
-    
-    weak var delegate: TableViewControllerDelegate?
-    
-    enum TableViewContent: String {
-        case firstRow
-        case secondRow
-        case thirdRow
-        case fourthRow
-        case fifthRow
-        case sixthRow
-        case seventhRow
-        case eightsRow
-        case ninthRow
-        case tenthRow
-        case row11
-        case row12
-        case row13
-        case row14
-        case row15
-        case row16
-        case row17
-        case row18
-        case row19
+enum TableViewContent: String, AllCasesProtocol {
+    static var allCases: [TableViewContent] {
+        return [.firstRow, .secondRow, .thirdRow, .fourthRow, .fifthRow, .sixthRow, .seventhRow, .eightsRow, .ninthRow, .tenthRow, .row11, .row12, .row13, .row14, .row15, .row16, .row17, .row18, .row19]
     }
     
-    private var allRows = [TableViewContent.firstRow, .secondRow, .thirdRow, .fourthRow, .fifthRow, .sixthRow, .seventhRow, .eightsRow, .ninthRow, .tenthRow, .row11, .row12, .row13, .row14, .row15, .row16, .row17, .row18, .row19, .secondRow, .thirdRow, .fourthRow, .fifthRow, .sixthRow, .seventhRow, .eightsRow, .ninthRow, .tenthRow, .row11, .row12, .row13, .row14, .row15, .row16, .row17, .row18, .row19]
+    case firstRow
+    case secondRow
+    case thirdRow
+    case fourthRow
+    case fifthRow
+    case sixthRow
+    case seventhRow
+    case eightsRow
+    case ninthRow
+    case tenthRow
+    case row11
+    case row12
+    case row13
+    case row14
+    case row15
+    case row16
+    case row17
+    case row18
+    case row19
+}
+
+enum CustomEnum: String, AllCasesProtocol {
+    static var allCases: [CustomEnum] = [.one, .two, .three]
+    
+    case one, two, three
+}
+
+// Define All Cases Protocol
+protocol AllCasesProtocol {
+    static var allCases: [Self] { get }
+}
+
+class TableViewController<T: AllCasesProtocol & RawRepresentable>: UIViewController, UITableViewDelegate, UITableViewDataSource where T.RawValue == String {
+    
+    // Create instance of UitableView
+    private var customTableView: UITableView!
+    
+    // Create table view data source
+    private var allRows = T.allCases
+    
+    // Create variable with function type
+    var valueChanged: ((T) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +96,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.changeButtonText(text: allRows[indexPath.row].rawValue)
+        valueChanged?(allRows[indexPath.row])
     }
  
 }
