@@ -12,13 +12,10 @@ class TableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         if selected {
             accessoryType = .checkmark
-            //cell.checkLabel.text = "✔︎"
         } else {
             accessoryType = .none
-            //cell.checkLabel.text = ""
         }
     }
 }

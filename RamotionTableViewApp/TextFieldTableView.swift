@@ -8,38 +8,31 @@
 
 import UIKit
 
-enum TextFieldContent: String, AllCasesProtocol {
-    static var allCases: [TextFieldContent] {
-        return [.one, .two, .three, .four, .five]
+extension UITableView {
+    func register(_ cellClass: AnyClass) {
+        register(cellClass, forCellReuseIdentifier: "\(cellClass)")
     }
     
-    case one
-    case two
-    case three
-    case four
-    case five
-}
-
-enum AnotherTextFieldContent: String, AllCasesProtocol {
-    static var allCases: [AnotherTextFieldContent] = [.cabage, . potato, .onion, . cucumber, .pumpkin]
-    case cabage, potato, onion, cucumber, pumpkin
+    func dequeueReusableCell<T: UITableViewCell>(indexPath: IndexPath) -> T {
+        return dequeueReusableCell(withIdentifier: "\(T.self)", for: indexPath) as! T
+    }
 }
 
 class TextFieldTableView<T: AllCasesProtocol & RawRepresentable>: NSObject, UITableViewDataSource, UITableViewDelegate where T.RawValue == String {
     
+    
+    // MARK: Init
     // It's important that generic type T is used
-    var items = T.allCases
+    private var items = T.allCases
     var textChanged: ((T) -> ())?
     
-    var textFieldTableView: UITableView!
+    var textFieldTableView: UITableView
     
     override init() {
+        // If textFieldTableView will init before super init it will be initialized at super.init call
+        textFieldTableView = UITableView(frame: .zero)
         super.init()
-        textFieldTableView = UITableView(frame: CGRect(x: 0,
-                                                       y: 0,
-                                                       width: 300,
-                                                       height: 200))
-        textFieldTableView.register(TableViewCell.self, forCellReuseIdentifier: "textFieldCell")
+        textFieldTableView.register(TableViewCell.self)
         textFieldTableView.delegate = self
         textFieldTableView.dataSource = self
     }
@@ -52,9 +45,7 @@ class TextFieldTableView<T: AllCasesProtocol & RawRepresentable>: NSObject, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let tableViewCellIdentifier = "textFieldCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier,
-                                                 for: indexPath)
+        let cell: TableViewCell = tableView.dequeueReusableCell(indexPath: indexPath)
         
         cell.textLabel?.text = items[indexPath.row].rawValue
         

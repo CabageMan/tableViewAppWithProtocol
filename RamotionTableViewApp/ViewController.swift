@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBAction func textButtonClick(_ sender: UIButton) {
         let nextViewControler = TableViewController<TableViewContent>()
         // Add closure as valueChanged property of table view controller 
-        nextViewControler.valueChanged = { string in
+        nextViewControler.tableViewController.textChanged = { string in
             self.textButton.setTitle(string.rawValue, for: .normal)
         }
         self.navigationController?.pushViewController(nextViewControler, animated: true)
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
                                     width: textButton.frame.size.width + 100,
                                     height: 30)
         
-        let tableViewTextField = CustomTextField(frame: textFieldFrame)
+        let tableViewTextField = CustomTextField<AnotherTextFieldContent>(frame: textFieldFrame)
         self.view.addSubview(tableViewTextField)
     }
 }
