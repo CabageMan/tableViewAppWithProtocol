@@ -48,7 +48,7 @@ protocol AllCasesProtocol {
 class TableViewController<T: AllCasesProtocol & RawRepresentable>: UIViewController, UITableViewDelegate, UITableViewDataSource where T.RawValue == String {
     
     // Create instance of UitableView
-    private var customTableView: UITableView!
+    var customTableView: UITableView!
     
     // Create table view data source
     private var allRows = T.allCases

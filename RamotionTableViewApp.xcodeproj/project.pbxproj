@@ -12,6 +12,8 @@
 		24370DD421FF0D07001CD868 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24370DD221FF0D07001CD868 /* Main.storyboard */; };
 		24370DD621FF0D07001CD868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24370DD521FF0D07001CD868 /* Assets.xcassets */; };
 		24370DD921FF0D07001CD868 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24370DD721FF0D07001CD868 /* LaunchScreen.storyboard */; };
+		24560D2622007623004C936E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24560D2522007623004C936E /* CustomTextField.swift */; };
+		24560D2822008FA0004C936E /* TextFieldTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24560D2722008FA0004C936E /* TextFieldTableView.swift */; };
 		24D1F1A121FF17DC00AD8899 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D1F1A021FF17DC00AD8899 /* TableViewController.swift */; };
 		24D1F1A321FF180300AD8899 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D1F1A221FF180300AD8899 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +26,8 @@
 		24370DD521FF0D07001CD868 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24370DD821FF0D07001CD868 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24370DDA21FF0D07001CD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24560D2522007623004C936E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		24560D2722008FA0004C936E /* TextFieldTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableView.swift; sourceTree = "<group>"; };
 		24D1F1A021FF17DC00AD8899 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		24D1F1A221FF180300AD8899 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,9 +63,11 @@
 			isa = PBXGroup;
 			children = (
 				24370DCE21FF0D07001CD868 /* AppDelegate.swift */,
+				24370DD021FF0D07001CD868 /* ViewController.swift */,
 				24D1F1A221FF180300AD8899 /* TableViewCell.swift */,
 				24D1F1A021FF17DC00AD8899 /* TableViewController.swift */,
-				24370DD021FF0D07001CD868 /* ViewController.swift */,
+				24560D2522007623004C936E /* CustomTextField.swift */,
+				24560D2722008FA0004C936E /* TextFieldTableView.swift */,
 				24370DD221FF0D07001CD868 /* Main.storyboard */,
 				24370DD521FF0D07001CD868 /* Assets.xcassets */,
 				24370DD721FF0D07001CD868 /* LaunchScreen.storyboard */,
@@ -146,6 +152,8 @@
 				24D1F1A321FF180300AD8899 /* TableViewCell.swift in Sources */,
 				24D1F1A121FF17DC00AD8899 /* TableViewController.swift in Sources */,
 				24370DCF21FF0D07001CD868 /* AppDelegate.swift in Sources */,
+				24560D2622007623004C936E /* CustomTextField.swift in Sources */,
+				24560D2822008FA0004C936E /* TextFieldTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
