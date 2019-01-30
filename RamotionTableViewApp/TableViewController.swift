@@ -8,6 +8,11 @@
 
 import UIKit
 
+// Define All Cases Protocol
+protocol AllCasesProtocol {
+    static var allCases: [Self] { get }
+}
+
 enum TableViewContent: String, AllCasesProtocol {
     static var allCases: [TableViewContent] {
         return [.firstRow, .secondRow, .thirdRow, .fourthRow, .fifthRow, .sixthRow, .seventhRow, .eightsRow, .ninthRow, .tenthRow, .row11, .row12, .row13, .row14, .row15, .row16, .row17, .row18, .row19]
@@ -36,13 +41,7 @@ enum TableViewContent: String, AllCasesProtocol {
 
 enum CustomEnum: String, AllCasesProtocol {
     static var allCases: [CustomEnum] = [.one, .two, .three]
-    
     case one, two, three
-}
-
-// Define All Cases Protocol
-protocol AllCasesProtocol {
-    static var allCases: [Self] { get }
 }
 
 class TableViewController<T: AllCasesProtocol & RawRepresentable>: UIViewController, UITableViewDelegate, UITableViewDataSource where T.RawValue == String {

@@ -64,10 +64,10 @@
 			children = (
 				24370DCE21FF0D07001CD868 /* AppDelegate.swift */,
 				24370DD021FF0D07001CD868 /* ViewController.swift */,
-				24D1F1A221FF180300AD8899 /* TableViewCell.swift */,
 				24D1F1A021FF17DC00AD8899 /* TableViewController.swift */,
-				24560D2522007623004C936E /* CustomTextField.swift */,
+				24D1F1A221FF180300AD8899 /* TableViewCell.swift */,
 				24560D2722008FA0004C936E /* TextFieldTableView.swift */,
+				24560D2522007623004C936E /* CustomTextField.swift */,
 				24370DD221FF0D07001CD868 /* Main.storyboard */,
 				24370DD521FF0D07001CD868 /* Assets.xcassets */,
 				24370DD721FF0D07001CD868 /* LaunchScreen.storyboard */,

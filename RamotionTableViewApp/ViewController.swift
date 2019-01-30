@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textButton: UIButton!
     
     @IBAction func textButtonClick(_ sender: UIButton) {
-        let nextViewControler = TableViewController<CustomEnum>()
+        let nextViewControler = TableViewController<TableViewContent>()
         // Add closure as valueChanged property of table view controller 
         nextViewControler.valueChanged = { string in
             self.textButton.setTitle(string.rawValue, for: .normal)

@@ -10,7 +10,7 @@ import UIKit
 
 class CustomTextField: UITextField, UITextFieldDelegate {
     
-    let tableViewController = TextFieldTableView()
+    let tableViewController = TextFieldTableView<AnotherTextFieldContent>()
     let tableViewToolBar = UIToolbar()
     
     override init(frame: CGRect) {
@@ -43,7 +43,7 @@ class CustomTextField: UITextField, UITextFieldDelegate {
         let doneButton = UIBarButtonItem(title: "Done",
                                          style: .done,
                                          target: self,
-                                         action: #selector(self.doneButtonPressed))
+                                         action: #selector(doneButtonPressed))
         tableViewToolBar.setItems([doneButton], animated: false)
         tableViewToolBar.isUserInteractionEnabled = true
         
@@ -51,9 +51,9 @@ class CustomTextField: UITextField, UITextFieldDelegate {
         // Create instance of TextFieldTableView
         let tableView: UITableView = tableViewController.textFieldTableView
         
-        tableViewController.textChanged = { string in
-            self.text = string
-        }
+        // Implementation of "textChanged" propetty"of TextFieldTableView
+        tableViewController.textChanged = { self.text = $0.rawValue }
+        
         // Add table view and tab bar as input and accessory views of text field
         textfield.inputView = tableView
         textfield.inputAccessoryView = tableViewToolBar
