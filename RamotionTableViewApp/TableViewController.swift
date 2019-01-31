@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class TableViewController<T: AllCasesProtocol & RawRepresentable>: UIViewController where T.RawValue == String {
     
     // MARK: Inits

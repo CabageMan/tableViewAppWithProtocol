@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol CommonTableViewCell {
-    associatedtype CellData
-    func fill(data: CellData)
-}
-
 class CommonTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Properties

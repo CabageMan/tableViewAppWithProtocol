@@ -41,6 +41,10 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
+    @IBAction func goToSTVButtonTap(_ sender: UIButton) {
+        let nextViewController = SectionsTVController()
+        self.navigationController?.pushViewController(nextViewController, animated: true)
+    }
     
 }
 

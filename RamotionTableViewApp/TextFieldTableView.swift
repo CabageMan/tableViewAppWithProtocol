@@ -8,16 +8,6 @@
 
 import UIKit
 
-extension UITableView {
-    func register(_ cellClass: AnyClass) {
-        register(cellClass, forCellReuseIdentifier: "\(cellClass)")
-    }
-    
-    func dequeueReusableCell<T: UITableViewCell>(indexPath: IndexPath) -> T {
-        return dequeueReusableCell(withIdentifier: "\(T.self)", for: indexPath) as! T
-    }
-}
-
 class TextFieldTableView<T: AllCasesProtocol & RawRepresentable>: NSObject, UITableViewDataSource, UITableViewDelegate where T.RawValue == String {
     
     

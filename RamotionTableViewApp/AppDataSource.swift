@@ -6,12 +6,30 @@
 //  Copyright © 2019 Viktor Bednyi Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-// Define All Cases Protocol
+// MARK: Protocol and extension definition
+
 protocol AllCasesProtocol {
     static var allCases: [Self] { get }
 }
+
+protocol CommonTableViewCell {
+    associatedtype CellData
+    func fill(data: CellData)
+}
+
+extension UITableView {
+    func register(_ cellClass: AnyClass) {
+        register(cellClass, forCellReuseIdentifier: "\(cellClass)")
+    }
+    
+    func dequeueReusableCell<T: UITableViewCell>(indexPath: IndexPath) -> T {
+        return dequeueReusableCell(withIdentifier: "\(T.self)", for: indexPath) as! T
+    }
+}
+
+// MARK: Data source definition
 
 enum TableViewContent: String, AllCasesProtocol {
     static var allCases: [TableViewContent] {
