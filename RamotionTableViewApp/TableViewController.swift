@@ -18,15 +18,15 @@ class TableViewController<T: AllCasesProtocol & RawRepresentable>: UIViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Get display sizes
-        let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
-        let displayWidth: CGFloat = self.view.frame.width
-        let displayHeight: CGFloat = self.view.frame.height
-        
         // Create custom table view and add it to superview
-        tableViewController.textFieldTableView.frame = CGRect(
-            x: 0, y: statusBarHeight, width: displayWidth, height: displayHeight - statusBarHeight
-        )
-        self.view.addSubview(tableViewController.textFieldTableView)
+        let tableView = tableViewController.textFieldTableView
+        self.view.addSubview(tableView)
+        
+        // Add constraints
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        tableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1.0).isActive = true
     }
 }
