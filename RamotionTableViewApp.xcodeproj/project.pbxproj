@@ -14,8 +14,11 @@
 		24370DD921FF0D07001CD868 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24370DD721FF0D07001CD868 /* LaunchScreen.storyboard */; };
 		24560D2622007623004C936E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24560D2522007623004C936E /* CustomTextField.swift */; };
 		24560D2822008FA0004C936E /* TextFieldTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24560D2722008FA0004C936E /* TextFieldTableView.swift */; };
+		24C1C54A2201E48000B5BBB8 /* CommonTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C1C5492201E48000B5BBB8 /* CommonTableView.swift */; };
 		24D1F1A121FF17DC00AD8899 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D1F1A021FF17DC00AD8899 /* TableViewController.swift */; };
 		24D1F1A321FF180300AD8899 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D1F1A221FF180300AD8899 /* TableViewCell.swift */; };
+		24D4F3822202C7EC00262A4E /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D4F3812202C7EC00262A4E /* CustomTableViewCell.swift */; };
+		24E674242201E0CA00673606 /* SeveralTVsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E674232201E0CA00673606 /* SeveralTVsController.swift */; };
 		24EFD8022201AB3C0083F8CD /* AppDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EFD8012201AB3C0083F8CD /* AppDataSource.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,8 +32,11 @@
 		24370DDA21FF0D07001CD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24560D2522007623004C936E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		24560D2722008FA0004C936E /* TextFieldTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableView.swift; sourceTree = "<group>"; };
+		24C1C5492201E48000B5BBB8 /* CommonTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTableView.swift; sourceTree = "<group>"; };
 		24D1F1A021FF17DC00AD8899 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		24D1F1A221FF180300AD8899 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		24D4F3812202C7EC00262A4E /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		24E674232201E0CA00673606 /* SeveralTVsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeveralTVsController.swift; sourceTree = "<group>"; };
 		24EFD8012201AB3C0083F8CD /* AppDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +77,9 @@
 				24D1F1A221FF180300AD8899 /* TableViewCell.swift */,
 				24560D2722008FA0004C936E /* TextFieldTableView.swift */,
 				24560D2522007623004C936E /* CustomTextField.swift */,
+				24E674232201E0CA00673606 /* SeveralTVsController.swift */,
+				24C1C5492201E48000B5BBB8 /* CommonTableView.swift */,
+				24D4F3812202C7EC00262A4E /* CustomTableViewCell.swift */,
 				24370DD221FF0D07001CD868 /* Main.storyboard */,
 				24370DD521FF0D07001CD868 /* Assets.xcassets */,
 				24370DD721FF0D07001CD868 /* LaunchScreen.storyboard */,
@@ -151,10 +160,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E674242201E0CA00673606 /* SeveralTVsController.swift in Sources */,
 				24370DD121FF0D07001CD868 /* ViewController.swift in Sources */,
 				24D1F1A321FF180300AD8899 /* TableViewCell.swift in Sources */,
+				24C1C54A2201E48000B5BBB8 /* CommonTableView.swift in Sources */,
 				24EFD8022201AB3C0083F8CD /* AppDataSource.swift in Sources */,
 				24D1F1A121FF17DC00AD8899 /* TableViewController.swift in Sources */,
+				24D4F3822202C7EC00262A4E /* CustomTableViewCell.swift in Sources */,
 				24370DCF21FF0D07001CD868 /* AppDelegate.swift in Sources */,
 				24560D2622007623004C936E /* CustomTextField.swift in Sources */,
 				24560D2822008FA0004C936E /* TextFieldTableView.swift in Sources */,

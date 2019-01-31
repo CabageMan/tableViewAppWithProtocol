@@ -12,15 +12,6 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var textButton: UIButton!
     
-    @IBAction func textButtonClick(_ sender: UIButton) {
-        let nextViewControler = TableViewController<TableViewContent>()
-        // Add closure as valueChanged property of table view controller 
-        nextViewControler.tableViewController.textChanged = { string in
-            self.textButton.setTitle(string.rawValue, for: .normal)
-        }
-        self.navigationController?.pushViewController(nextViewControler, animated: true)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,5 +24,23 @@ class ViewController: UIViewController {
         let tableViewTextField = CustomTextField<AnotherTextFieldContent>(frame: textFieldFrame)
         self.view.addSubview(tableViewTextField)
     }
+    
+    // MARK: Actions
+    
+    @IBAction func textButtonClick(_ sender: UIButton) {
+        let nextViewControler = TableViewController<TableViewContent>()
+        // Add closure as valueChanged property of table view controller 
+        nextViewControler.tableViewController.textChanged = { [weak self] string in
+            self?.textButton.setTitle(string.rawValue, for: .normal)
+        }
+        self.navigationController?.pushViewController(nextViewControler, animated: true)
+    }
+    
+    @IBAction func goToTVsButtonTap(_ sender: UIButton) {
+        let nextViewController = SeveralTVsController()
+        self.navigationController?.pushViewController(nextViewController, animated: true)
+    }
+    
+    
 }
 

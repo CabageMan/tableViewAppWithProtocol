@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class TableViewController<T: AllCasesProtocol & RawRepresentable>: UIViewController where T.RawValue == String {
     
     // MARK: Inits
@@ -21,7 +23,7 @@ class TableViewController<T: AllCasesProtocol & RawRepresentable>: UIViewControl
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
         
-        // Create custom table vuew and add it to superview
+        // Create custom table view and add it to superview
         tableViewController.textFieldTableView.frame = CGRect(
             x: 0, y: statusBarHeight, width: displayWidth, height: displayHeight - statusBarHeight
         )
