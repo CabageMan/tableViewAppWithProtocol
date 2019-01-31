@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2414F2942202F0CC0083D392 /* SectionalTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2414F2932202F0CC0083D392 /* SectionalTVCell.swift */; };
+		2414F29622032E4F0083D392 /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2414F29522032E4F0083D392 /* downArrow.png */; };
 		24370DCF21FF0D07001CD868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24370DCE21FF0D07001CD868 /* AppDelegate.swift */; };
 		24370DD121FF0D07001CD868 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24370DD021FF0D07001CD868 /* ViewController.swift */; };
 		24370DD421FF0D07001CD868 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24370DD221FF0D07001CD868 /* Main.storyboard */; };
 		24370DD621FF0D07001CD868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24370DD521FF0D07001CD868 /* Assets.xcassets */; };
 		24370DD921FF0D07001CD868 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24370DD721FF0D07001CD868 /* LaunchScreen.storyboard */; };
+		24459DA8220337E2003281C0 /* SectionaTVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24459DA7220337E2003281C0 /* SectionaTVHeader.swift */; };
 		2447B4652202E8EE00B27313 /* SectionsTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2447B4642202E8EE00B27313 /* SectionsTVController.swift */; };
 		2447B4672202EC2200B27313 /* SectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2447B4662202EC2200B27313 /* SectionTableView.swift */; };
 		24560D2622007623004C936E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24560D2522007623004C936E /* CustomTextField.swift */; };
@@ -27,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		2414F2932202F0CC0083D392 /* SectionalTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionalTVCell.swift; sourceTree = "<group>"; };
+		2414F29522032E4F0083D392 /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downArrow.png; sourceTree = "<group>"; };
 		24370DCB21FF0D07001CD868 /* RamotionTableViewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RamotionTableViewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24370DCE21FF0D07001CD868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24370DD021FF0D07001CD868 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		24370DD521FF0D07001CD868 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24370DD821FF0D07001CD868 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24370DDA21FF0D07001CD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24459DA7220337E2003281C0 /* SectionaTVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionaTVHeader.swift; sourceTree = "<group>"; };
 		2447B4642202E8EE00B27313 /* SectionsTVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsTVController.swift; sourceTree = "<group>"; };
 		2447B4662202EC2200B27313 /* SectionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTableView.swift; sourceTree = "<group>"; };
 		24560D2522007623004C936E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 				2447B4642202E8EE00B27313 /* SectionsTVController.swift */,
 				2447B4662202EC2200B27313 /* SectionTableView.swift */,
 				2414F2932202F0CC0083D392 /* SectionalTVCell.swift */,
+				24459DA7220337E2003281C0 /* SectionaTVHeader.swift */,
+				2414F29522032E4F0083D392 /* downArrow.png */,
 				24370DD221FF0D07001CD868 /* Main.storyboard */,
 				24370DD521FF0D07001CD868 /* Assets.xcassets */,
 				24370DD721FF0D07001CD868 /* LaunchScreen.storyboard */,
@@ -159,6 +165,7 @@
 				24370DD921FF0D07001CD868 /* LaunchScreen.storyboard in Resources */,
 				24370DD621FF0D07001CD868 /* Assets.xcassets in Resources */,
 				24370DD421FF0D07001CD868 /* Main.storyboard in Resources */,
+				2414F29622032E4F0083D392 /* downArrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +182,7 @@
 				2414F2942202F0CC0083D392 /* SectionalTVCell.swift in Sources */,
 				24C1C54A2201E48000B5BBB8 /* CommonTableView.swift in Sources */,
 				24EFD8022201AB3C0083F8CD /* AppDataSource.swift in Sources */,
+				24459DA8220337E2003281C0 /* SectionaTVHeader.swift in Sources */,
 				2447B4652202E8EE00B27313 /* SectionsTVController.swift in Sources */,
 				24D1F1A121FF17DC00AD8899 /* TableViewController.swift in Sources */,
 				24D4F3822202C7EC00262A4E /* CustomTableViewCell.swift in Sources */,

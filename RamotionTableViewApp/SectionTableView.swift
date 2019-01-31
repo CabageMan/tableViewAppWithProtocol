@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SectionalTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UITableViewDelegate, UITableViewDataSource {
+class SectionalTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
     // MARK: Properties
     var items = [(String, [T.CellData])]()
@@ -51,7 +51,21 @@ class SectionalTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UI
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if let header = view as? UITableViewHeaderFooterView {
+            
             header.textLabel?.textColor = UIColor.white
+            // Add gesture recognizer
+            let recognizer = UITapGestureRecognizer(target: self, action:#selector(tableViewSectionTap(recpgnizer:)))
+            recognizer.delegate = self
+            header.addGestureRecognizer(recognizer)
+            // Add arrow image
+            let arrow = UIImageView(image: UIImage(named: "downArrow.png"))
+            header.addSubview(arrow)
+            // Add constraints
+            arrow.translatesAutoresizingMaskIntoConstraints = false
+            arrow.centerYAnchor.constraint(equalTo: header.centerYAnchor).isActive = true
+            arrow.rightAnchor.constraint(equalTo: header.rightAnchor).isActive = true
+            arrow.widthAnchor.constraint(equalTo: header.heightAnchor, multiplier: 0.8).isActive = true
+            arrow.heightAnchor.constraint(equalTo: arrow.widthAnchor).isActive = true
         }
         
         switch section {
@@ -68,9 +82,20 @@ class SectionalTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: T = tableView.dequeueReusableCell(indexPath: indexPath)
-//        cell.textLabel?.text = "\(items[indexPath.section].1[indexPath.row])"
         cell.fill(data: (items[indexPath.section].1[indexPath.row]))
         return cell
+    }
+    
+    func createArrowLabel() -> UILabel {
+        let arrowLabel = UILabel()
+        
+        return arrowLabel
+    }
+    
+    @objc func tableViewSectionTap(recpgnizer: UIGestureRecognizer) {
+        if let arrowImage = recpgnizer.view {
+            print(arrowImage)
+        }
     }
     
     
