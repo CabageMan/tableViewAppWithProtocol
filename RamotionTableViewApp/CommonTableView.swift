@@ -8,10 +8,15 @@
 
 import UIKit
 
-class CommonTableView<T: UITableViewCell>: NSObject, UITableViewDataSource, UITableViewDelegate {
+protocol CommonTableViewCell {
+    associatedtype CellData
+    func fill(data: CellData)
+}
+
+class CommonTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Properties
-    var items = [String]()
+    var items = [T.CellData]()
     var customTableView: UITableView
     
     // MARK: Init
@@ -29,7 +34,7 @@ class CommonTableView<T: UITableViewCell>: NSObject, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: T = tableView.dequeueReusableCell(indexPath: indexPath)
-        cell.textLabel?.text = items[indexPath.row]
+        cell.fill(data: items[indexPath.row])
         return cell
     }
 }

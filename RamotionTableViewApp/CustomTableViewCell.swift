@@ -8,8 +8,12 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+class CustomTableViewCell: UITableViewCell, CommonTableViewCell {
     
+    func fill(data: String) {
+        textLabel?.text = data
+    }
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         if selected {

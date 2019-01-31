@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct User {
+    let name: String
+    let age: Int
+}
+
 class SeveralTVsController: UIViewController {
     
     let firstTableViewController = CommonTableView<TableViewCell>()
@@ -16,7 +21,8 @@ class SeveralTVsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add data for table views
-        firstTableViewController.items = ["one", "two", "three", "four", "five", "six", "seven"]
+        let item = (name: "Alex", age: 14)
+        firstTableViewController.items = [1,2,3,4]
         secondTableViewController.items = ["onion", "cabage", "potato", "cucumber", "pumpkin", "corn", "squash"]
         
         // Create custom table view and add it to superview
