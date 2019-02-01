@@ -1,19 +1,21 @@
 //
-//  TableViewCell.swift
+//  SectionalTVCell.swift
 //  RamotionTableViewApp
 //
-//  Created by ViktorsMacbook on 28.01.19.
+//  Created by ViktorsMacbook on 31.01.19.
 //  Copyright © 2019 Viktor Bednyi Inc. All rights reserved.
 //
 
 import UIKit
 
-class TableViewCell: UITableViewCell, CommonTableViewCell {
-    
-    func fillCell(data: Int) {
-        textLabel?.text = "\(data)"
-    }
+class SectionalTVCell: UITableViewCell, CommonTableViewCell {
 
+    typealias CellData = String
+    
+    func fillCell(data: String) {
+        textLabel?.text = data
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         if selected {

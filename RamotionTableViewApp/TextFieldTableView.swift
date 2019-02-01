@@ -8,16 +8,6 @@
 
 import UIKit
 
-extension UITableView {
-    func register(_ cellClass: AnyClass) {
-        register(cellClass, forCellReuseIdentifier: "\(cellClass)")
-    }
-    
-    func dequeueReusableCell<T: UITableViewCell>(indexPath: IndexPath) -> T {
-        return dequeueReusableCell(withIdentifier: "\(T.self)", for: indexPath) as! T
-    }
-}
-
 class TextFieldTableView<T: AllCasesProtocol & RawRepresentable>: NSObject, UITableViewDataSource, UITableViewDelegate where T.RawValue == String {
     
     
@@ -32,7 +22,7 @@ class TextFieldTableView<T: AllCasesProtocol & RawRepresentable>: NSObject, UITa
         // If textFieldTableView will init before super init it will be initialized at super.init call
         textFieldTableView = UITableView(frame: .zero)
         super.init()
-        textFieldTableView.register(TableViewCell.self)
+        textFieldTableView.registerCell(TableViewCell.self)
         textFieldTableView.delegate = self
         textFieldTableView.dataSource = self
     }

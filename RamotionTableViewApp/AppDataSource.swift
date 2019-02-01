@@ -6,11 +6,74 @@
 //  Copyright © 2019 Viktor Bednyi Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-// Define All Cases Protocol
+// MARK: Protocol and extension definition
+
 protocol AllCasesProtocol {
     static var allCases: [Self] { get }
+}
+
+protocol CommonTableViewCell {
+    associatedtype CellData
+    func fillCell(data: CellData)
+}
+
+protocol CommonTableViewHeader {
+    associatedtype HeaderData
+    var section: Int {get set}
+    func fillHeader(data: HeaderData, section: Int)
+}
+
+extension UITableView {
+    // Table view header
+    func registerHeader(_ headerClass: AnyClass) {
+        register(headerClass, forHeaderFooterViewReuseIdentifier: "\(headerClass)")
+    }
+    
+    func dequeReusebleHeader<H: UITableViewHeaderFooterView>() -> H {
+        return dequeueReusableHeaderFooterView(withIdentifier: "\(H.self)") as! H
+    }
+    
+    // Table view cells
+    func registerCell(_ cellClass: AnyClass) {
+        register(cellClass, forCellReuseIdentifier: "\(cellClass)")
+    }
+    
+    func dequeueReusableCell<T: UITableViewCell>(indexPath: IndexPath) -> T {
+        return dequeueReusableCell(withIdentifier: "\(T.self)", for: indexPath) as! T
+    }
+}
+
+extension UIView {
+    
+    func rotate(_ toValue: CGFloat, duration: CFTimeInterval) {
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        
+        animation.toValue = toValue
+        animation.duration = duration
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = kCAFillModeForwards
+        
+        self.layer.add(animation, forKey: nil)
+    }
+    
+}
+
+// MARK: Data source definition
+
+struct SectionalTVDataModel {
+    let data1 = [
+        (name: "Section 1", cells: ["one", "two", "tree", "four", "five"]),
+        (name: "Section 2", cells: ["eins", " zwei", " drei", "vier", "fünf"]),
+        (name: "Section 3", cells: ["un", "deux", "trois", "quatre", "cinq"])
+    ]
+    let data2 = [
+        (name: 1, cells: [1, 2, 3, 3, 4]),
+        (name: 2, cells: [5, 6, 7, 8, 9]),
+        (name: 3, cells: [10, 12, 14, 15])
+    ]
+    
 }
 
 enum TableViewContent: String, AllCasesProtocol {

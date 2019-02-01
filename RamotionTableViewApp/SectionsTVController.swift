@@ -1,23 +1,25 @@
 //
-//  TableViewController.swift
+//  SectionsTVController.swift
 //  RamotionTableViewApp
 //
-//  Created by ViktorsMacbook on 28.01.19.
+//  Created by ViktorsMacbook on 31.01.19.
 //  Copyright © 2019 Viktor Bednyi Inc. All rights reserved.
 //
 
 import UIKit
 
-class TableViewController<T: AllCasesProtocol & RawRepresentable>: UIViewController where T.RawValue == String {
+class SectionsTVController: UIViewController {
     
-    // MARK: Inits
-    let tableViewController = TextFieldTableView<T>()
+    let tableViewController = SectionalTableView<SectionalTVCell, SectionalTVHeader>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Add data for table views
+        tableViewController.items = SectionalTVDataModel().data1
+        
         // Create custom table view and add it to superview
-        let tableView = tableViewController.textFieldTableView
+        let tableView = tableViewController.customTableView
         self.view.addSubview(tableView)
         
         // Add constraints
@@ -25,6 +27,6 @@ class TableViewController<T: AllCasesProtocol & RawRepresentable>: UIViewControl
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        tableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1.0).isActive = true
+        tableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1).isActive = true
     }
 }

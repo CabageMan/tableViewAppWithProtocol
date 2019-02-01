@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol CommonTableViewCell {
-    associatedtype CellData
-    func fill(data: CellData)
-}
-
 class CommonTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Properties
@@ -23,7 +18,7 @@ class CommonTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UITab
     override init() {
         customTableView = UITableView(frame: .zero)
         super.init()
-        customTableView.register(T.self)
+        customTableView.registerCell(T.self)
         customTableView.delegate = self
         customTableView.dataSource = self
     }
@@ -34,7 +29,7 @@ class CommonTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: T = tableView.dequeueReusableCell(indexPath: indexPath)
-        cell.fill(data: items[indexPath.row])
+        cell.fillCell(data: items[indexPath.row])
         return cell
     }
 }
