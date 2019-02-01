@@ -10,7 +10,7 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell, CommonTableViewCell {
     
-    func fill(data: String) {
+    func fillCell(data: String) {
         textLabel?.text = data
     }
 

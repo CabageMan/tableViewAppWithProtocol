@@ -22,7 +22,7 @@ class TextFieldTableView<T: AllCasesProtocol & RawRepresentable>: NSObject, UITa
         // If textFieldTableView will init before super init it will be initialized at super.init call
         textFieldTableView = UITableView(frame: .zero)
         super.init()
-        textFieldTableView.register(TableViewCell.self)
+        textFieldTableView.registerCell(TableViewCell.self)
         textFieldTableView.delegate = self
         textFieldTableView.dataSource = self
     }

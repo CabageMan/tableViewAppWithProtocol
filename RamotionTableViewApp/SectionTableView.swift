@@ -8,16 +8,18 @@
 
 import UIKit
 
-class SectionalTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
+class SectionalTableView<T: UITableViewCell & CommonTableViewCell, H: UITableViewHeaderFooterView & CommonTableViewHeader>: NSObject, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
     // MARK: Properties
-    var items = [(String, [T.CellData])]()
+    var items = [(H.HeaderData, [T.CellData])]()
     var customTableView = UITableView(frame: .zero)
+    var openedSections = Set<Int>()
     
     // MARK: Init
     override init() {
         super.init()
-        customTableView.register(T.self)
+        customTableView.registerCell(T.self)
+        customTableView.registerHeader(H.self)
         customTableView.delegate = self
         customTableView.dataSource = self
     }
@@ -27,11 +29,7 @@ class SectionalTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items[section].1.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return items[section].0
+        return openedSections.contains(section) ? items[section].1.count : 0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -48,41 +46,34 @@ class SectionalTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UI
         }
     }
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header: H = customTableView.dequeReusebleHeader()
         
-        if let header = view as? UITableViewHeaderFooterView {
-            
-            header.textLabel?.textColor = UIColor.white
-            // Add gesture recognizer
-            let recognizer = UITapGestureRecognizer(target: self, action:#selector(tableViewSectionTap(recpgnizer:)))
-            recognizer.delegate = self
-            header.addGestureRecognizer(recognizer)
-            // Add arrow image
-            let arrow = UIImageView(image: UIImage(named: "downArrow.png"))
-            header.addSubview(arrow)
-            // Add constraints
-            arrow.translatesAutoresizingMaskIntoConstraints = false
-            arrow.centerYAnchor.constraint(equalTo: header.centerYAnchor).isActive = true
-            arrow.rightAnchor.constraint(equalTo: header.rightAnchor).isActive = true
-            arrow.widthAnchor.constraint(equalTo: header.heightAnchor, multiplier: 0.8).isActive = true
-            arrow.heightAnchor.constraint(equalTo: arrow.widthAnchor).isActive = true
-        }
+        // Fill header data
+        header.fillHeader(data: items[section].0, section: section)
         
         switch section {
             case 0:
-                view.tintColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+                header.contentView.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
             case 1:
-                view.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+                header.contentView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
             case 2:
-                view.tintColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+                header.contentView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
             default:
-                view.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                header.contentView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
+        
+        // Add gesture recognizer
+        let recognizer = UITapGestureRecognizer(target: self, action:#selector(tableViewSectionTap(recognizer:)))
+        recognizer.delegate = self
+        header.addGestureRecognizer(recognizer)
+    
+        return header
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: T = tableView.dequeueReusableCell(indexPath: indexPath)
-        cell.fill(data: (items[indexPath.section].1[indexPath.row]))
+        cell.fillCell(data: (items[indexPath.section].1[indexPath.row]))
         return cell
     }
     
@@ -92,10 +83,18 @@ class SectionalTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UI
         return arrowLabel
     }
     
-    @objc func tableViewSectionTap(recpgnizer: UIGestureRecognizer) {
-        if let arrowImage = recpgnizer.view {
-            print(arrowImage)
+    @objc func tableViewSectionTap(recognizer: UIGestureRecognizer) {
+        
+        guard let header = recognizer.view as? H else { return }
+        
+        if !openedSections.insert(header.section).inserted {
+            openedSections.remove(header.section)
         }
+        
+//        // Rotate image
+//        openedSections.contains(section) ? header.arrowView.rotate(.pi/2, duration: 0.2) : header.arrowView.rotate(0.0, duration: 0.2)
+        
+        customTableView.reloadSections(IndexSet(header.section...header.section), with: .none)
     }
     
     

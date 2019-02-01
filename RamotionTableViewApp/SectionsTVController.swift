@@ -10,22 +10,13 @@ import UIKit
 
 class SectionsTVController: UIViewController {
     
-    let tableViewController = SectionalTableView<SectionalTVCell>()
+    let tableViewController = SectionalTableView<SectionalTVCell, SectionalTVHeader>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Add data for table views
-        tableViewController.items = [
-            (name: "Section 1", cells: ["one", "two", "tree", "four", "five"]),
-            (name: "Section 2", cells: ["eins", " zwei", " drei", "vier", "fünf"]),
-            (name: "Section 3", cells: ["un", "deux", "trois", "quatre", "cinq"])
-        ]
-//        tableViewController.items = [
-//            (name: "Section 1", cells: [1, 2, 3, 3, 4]),
-//            (name: "Section 2", cells: [5, 6, 7, 8, 9]),
-//            (name: "Section 3", cells: [10, 12, 14, 15])
-//        ]
+        tableViewController.items = SectionalTVDataModel().data1
         
         // Create custom table view and add it to superview
         let tableView = tableViewController.customTableView

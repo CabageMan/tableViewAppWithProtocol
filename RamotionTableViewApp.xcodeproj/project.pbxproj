@@ -17,6 +17,8 @@
 		24459DA8220337E2003281C0 /* SectionaTVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24459DA7220337E2003281C0 /* SectionaTVHeader.swift */; };
 		2447B4652202E8EE00B27313 /* SectionsTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2447B4642202E8EE00B27313 /* SectionsTVController.swift */; };
 		2447B4672202EC2200B27313 /* SectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2447B4662202EC2200B27313 /* SectionTableView.swift */; };
+		2450F17F22045FD800C777FB /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2450F17E22045FD800C777FB /* rightArrow.png */; };
+		2450F1812204763500C777FB /* CustomTVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2450F1802204763500C777FB /* CustomTVHeader.swift */; };
 		24560D2622007623004C936E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24560D2522007623004C936E /* CustomTextField.swift */; };
 		24560D2822008FA0004C936E /* TextFieldTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24560D2722008FA0004C936E /* TextFieldTableView.swift */; };
 		24C1C54A2201E48000B5BBB8 /* CommonTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C1C5492201E48000B5BBB8 /* CommonTableView.swift */; };
@@ -40,6 +42,8 @@
 		24459DA7220337E2003281C0 /* SectionaTVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionaTVHeader.swift; sourceTree = "<group>"; };
 		2447B4642202E8EE00B27313 /* SectionsTVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsTVController.swift; sourceTree = "<group>"; };
 		2447B4662202EC2200B27313 /* SectionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTableView.swift; sourceTree = "<group>"; };
+		2450F17E22045FD800C777FB /* rightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightArrow.png; sourceTree = "<group>"; };
+		2450F1802204763500C777FB /* CustomTVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTVHeader.swift; sourceTree = "<group>"; };
 		24560D2522007623004C936E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		24560D2722008FA0004C936E /* TextFieldTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableView.swift; sourceTree = "<group>"; };
 		24C1C5492201E48000B5BBB8 /* CommonTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTableView.swift; sourceTree = "<group>"; };
@@ -94,7 +98,9 @@
 				2447B4662202EC2200B27313 /* SectionTableView.swift */,
 				2414F2932202F0CC0083D392 /* SectionalTVCell.swift */,
 				24459DA7220337E2003281C0 /* SectionaTVHeader.swift */,
+				2450F1802204763500C777FB /* CustomTVHeader.swift */,
 				2414F29522032E4F0083D392 /* downArrow.png */,
+				2450F17E22045FD800C777FB /* rightArrow.png */,
 				24370DD221FF0D07001CD868 /* Main.storyboard */,
 				24370DD521FF0D07001CD868 /* Assets.xcassets */,
 				24370DD721FF0D07001CD868 /* LaunchScreen.storyboard */,
@@ -164,6 +170,7 @@
 			files = (
 				24370DD921FF0D07001CD868 /* LaunchScreen.storyboard in Resources */,
 				24370DD621FF0D07001CD868 /* Assets.xcassets in Resources */,
+				2450F17F22045FD800C777FB /* rightArrow.png in Resources */,
 				24370DD421FF0D07001CD868 /* Main.storyboard in Resources */,
 				2414F29622032E4F0083D392 /* downArrow.png in Resources */,
 			);
@@ -176,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2450F1812204763500C777FB /* CustomTVHeader.swift in Sources */,
 				24E674242201E0CA00673606 /* SeveralTVsController.swift in Sources */,
 				24370DD121FF0D07001CD868 /* ViewController.swift in Sources */,
 				24D1F1A321FF180300AD8899 /* TableViewCell.swift in Sources */,

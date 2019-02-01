@@ -1,17 +1,17 @@
 //
-//  SectionaTVHeader.swift
+//  CustomTVHeader.swift
 //  RamotionTableViewApp
 //
-//  Created by ViktorsMacbook on 31.01.19.
+//  Created by ViktorsMacbook on 01.02.19.
 //  Copyright © 2019 Viktor Bednyi Inc. All rights reserved.
 //
 
 import UIKit
 
-class SectionalTVHeader: UITableViewHeaderFooterView, CommonTableViewHeader {
+class CustomTVHeader: UITableViewHeaderFooterView, CommonTableViewHeader {
     
     let titleLabel = UILabel()
-    let arrowView = UIImageView(image: UIImage(named: "rightArrow.png"))
+    let arrowView = UIImageView(image: UIImage(named: "downArrow.png"))
     
     var section = 0
     
@@ -44,8 +44,8 @@ class SectionalTVHeader: UITableViewHeaderFooterView, CommonTableViewHeader {
     
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     
-    func fillHeader(data: String, section: Int) {
-        titleLabel.text = data
+    func fillHeader(data: Int, section: Int) {
+        titleLabel.text = "\(data)"
         self.section = section
     }
 }

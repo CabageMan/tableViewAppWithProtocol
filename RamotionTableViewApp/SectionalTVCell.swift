@@ -12,7 +12,7 @@ class SectionalTVCell: UITableViewCell, CommonTableViewCell {
 
     typealias CellData = String
     
-    func fill(data: String) {
+    func fillCell(data: String) {
         textLabel?.text = data
     }
     
