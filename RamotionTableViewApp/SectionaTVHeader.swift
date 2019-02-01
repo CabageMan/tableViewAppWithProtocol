@@ -8,12 +8,10 @@
 
 import UIKit
 
-class SectionalTVHeader: UITableViewHeaderFooterView, CommonTableViewHeader {
+class SectionalTVHeader: UITableViewHeaderFooterView, Fillable {
     
-    let titleLabel = UILabel()
-    let arrowView = UIImageView(image: UIImage(named: "rightArrow.png"))
-    
-    var section = 0
+    private let titleLabel = UILabel()
+    let arrowView = UIImageView(image: #imageLiteral(resourceName: "shewron"))
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -44,8 +42,7 @@ class SectionalTVHeader: UITableViewHeaderFooterView, CommonTableViewHeader {
     
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     
-    func fillHeader(data: String, section: Int) {
+    func fill(data: String) {
         titleLabel.text = data
-        self.section = section
     }
 }

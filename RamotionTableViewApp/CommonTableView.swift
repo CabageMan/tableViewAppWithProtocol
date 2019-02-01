@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommonTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UITableViewDataSource, UITableViewDelegate {
+class CommonTableView<T: UITableViewCell & Fillable>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Properties
     var items = [T.CellData]()
@@ -29,7 +29,7 @@ class CommonTableView<T: UITableViewCell & CommonTableViewCell>: NSObject, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: T = tableView.dequeueReusableCell(indexPath: indexPath)
-        cell.fillCell(data: items[indexPath.row])
+        cell.fill(data: items[indexPath.row])
         return cell
     }
 }

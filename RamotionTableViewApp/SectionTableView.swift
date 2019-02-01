@@ -8,20 +8,25 @@
 
 import UIKit
 
-class SectionalTableView<T: UITableViewCell & CommonTableViewCell, H: UITableViewHeaderFooterView & CommonTableViewHeader>: NSObject, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
+class SectionalTableView<T: UITableViewCell & Fillable, H: UITableViewHeaderFooterView & Fillable>: NSObject, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
     // MARK: Properties
-    var items = [(H.HeaderData, [T.CellData])]()
-    var customTableView = UITableView(frame: .zero)
-    var openedSections = Set<Int>()
+    var items: [(H.CellData, [T.CellData])] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    let tableView = UITableView()
+    private var openedSections = Set<Int>()
     
     // MARK: Init
     override init() {
         super.init()
-        customTableView.registerCell(T.self)
-        customTableView.registerHeader(H.self)
-        customTableView.delegate = self
-        customTableView.dataSource = self
+        tableView.registerCell(T.self)
+        tableView.registerHeader(H.self)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,35 +38,15 @@ class SectionalTableView<T: UITableViewCell & CommonTableViewCell, H: UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let defaultSectionHeight: CGFloat = 50.0
-        switch section {
-            case 0:
-                return defaultSectionHeight + 15.0
-            case 1:
-                return defaultSectionHeight + 30.0
-            case 2:
-                return defaultSectionHeight + 8.0
-            default:
-                return defaultSectionHeight
-        }
+        return 55
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header: H = customTableView.dequeReusebleHeader()
+        let header: H = tableView.dequeReusebleHeader()
         
         // Fill header data
-        header.fillHeader(data: items[section].0, section: section)
-        
-        switch section {
-            case 0:
-                header.contentView.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-            case 1:
-                header.contentView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-            case 2:
-                header.contentView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-            default:
-                header.contentView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        }
+        header.fill(data: items[section].0)
+        header.tag = section
         
         // Add gesture recognizer
         let recognizer = UITapGestureRecognizer(target: self, action:#selector(tableViewSectionTap(recognizer:)))
@@ -73,29 +58,17 @@ class SectionalTableView<T: UITableViewCell & CommonTableViewCell, H: UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: T = tableView.dequeueReusableCell(indexPath: indexPath)
-        cell.fillCell(data: (items[indexPath.section].1[indexPath.row]))
+        cell.fill(data: (items[indexPath.section].1[indexPath.row]))
         return cell
-    }
-    
-    func createArrowLabel() -> UILabel {
-        let arrowLabel = UILabel()
-        
-        return arrowLabel
     }
     
     @objc func tableViewSectionTap(recognizer: UIGestureRecognizer) {
         
         guard let header = recognizer.view as? H else { return }
         
-        if !openedSections.insert(header.section).inserted {
-            openedSections.remove(header.section)
+        if !openedSections.insert(header.tag).inserted {
+            openedSections.remove(header.tag)
         }
-        
-//        // Rotate image
-//        openedSections.contains(section) ? header.arrowView.rotate(.pi/2, duration: 0.2) : header.arrowView.rotate(0.0, duration: 0.2)
-        
-        customTableView.reloadSections(IndexSet(header.section...header.section), with: .none)
+        tableView.reloadSections(IndexSet(integer: header.tag), with: .none)
     }
-    
-    
 }

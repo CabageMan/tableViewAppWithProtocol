@@ -16,7 +16,7 @@ class SectionsTVController: UIViewController {
         super.viewDidLoad()
         
         // Add data for table views
-        tableViewController.items = SectionalTVDataModel().data1
+        tableViewController.items = SectionalTVDataModel.data1
         
         // Create custom table view and add it to superview
         let tableView = tableViewController.customTableView

@@ -8,12 +8,10 @@
 
 import UIKit
 
-class CustomTVHeader: UITableViewHeaderFooterView, CommonTableViewHeader {
+class CustomTVHeader: UITableViewHeaderFooterView, Fillable {
     
     let titleLabel = UILabel()
     let arrowView = UIImageView(image: UIImage(named: "downArrow.png"))
-    
-    var section = 0
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -44,8 +42,7 @@ class CustomTVHeader: UITableViewHeaderFooterView, CommonTableViewHeader {
     
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     
-    func fillHeader(data: Int, section: Int) {
+    func fill(data: Int) {
         titleLabel.text = "\(data)"
-        self.section = section
     }
 }

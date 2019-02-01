@@ -14,15 +14,9 @@ protocol AllCasesProtocol {
     static var allCases: [Self] { get }
 }
 
-protocol CommonTableViewCell {
+protocol Fillable {
     associatedtype CellData
-    func fillCell(data: CellData)
-}
-
-protocol CommonTableViewHeader {
-    associatedtype HeaderData
-    var section: Int {get set}
-    func fillHeader(data: HeaderData, section: Int)
+    func fill(data: CellData)
 }
 
 extension UITableView {
@@ -62,13 +56,14 @@ extension UIView {
 
 // MARK: Data source definition
 
-struct SectionalTVDataModel {
-    let data1 = [
+enum SectionalTVDataModel {
+    static let data1 = [
         (name: "Section 1", cells: ["one", "two", "tree", "four", "five"]),
         (name: "Section 2", cells: ["eins", " zwei", " drei", "vier", "fünf"]),
-        (name: "Section 3", cells: ["un", "deux", "trois", "quatre", "cinq"])
+        (name: "Section 3", cells: ["eins", " zwei", " drei", "vier", "fünf"]),
+        (name: "Section 4", cells: ["un", "deux", "trois", "quatre", "cinq"])
     ]
-    let data2 = [
+    static let data2 = [
         (name: 1, cells: [1, 2, 3, 3, 4]),
         (name: 2, cells: [5, 6, 7, 8, 9]),
         (name: 3, cells: [10, 12, 14, 15])

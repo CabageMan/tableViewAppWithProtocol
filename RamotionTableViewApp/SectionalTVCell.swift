@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SectionalTVCell: UITableViewCell, CommonTableViewCell {
+class SectionalTVCell: UITableViewCell, Fillable {
 
     typealias CellData = String
     
-    func fillCell(data: String) {
+    func fill(data: String) {
         textLabel?.text = data
     }
     

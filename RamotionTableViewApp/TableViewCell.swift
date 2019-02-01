@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell, CommonTableViewCell {
+class TableViewCell: UITableViewCell, Fillable {
     
-    func fillCell(data: Int) {
+    func fill(data: Int) {
         textLabel?.text = "\(data)"
     }
 
